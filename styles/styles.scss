@@ -1,0 +1,305 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%; //i.e 10px
+}
+
+$bg-color: #10ec84;
+$txt-color: #101010;
+$border-color: #ccc;
+$danger: red;
+$cornflowerblue: cornflowerblue;
+$white: #fff;
+
+@mixin flexcenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// 1 : operators font-size: 5rem + 5rem = 10rem = 100px
+// 2 : variables $bg-color: #10ec84;
+// 3 : nesting
+// 4 : mixing
+// 5 : parameters
+// 6 : partials @import "mixing"  create with _mixing.scss
+
+// header {
+// //   @include flexcenter;
+// //   background: $bg-color;
+//   h1 {
+//     color: red;
+//     font-size: 5rem;
+//     &:hover {
+//       color: $txt-color;
+//     }
+//   }
+// }
+
+header {
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px;
+  .itemheader {
+    span {
+      display: inline-flex;
+      align-items: flex-start;
+    }
+    .itembutton {
+      background-color: $bg-color;
+      width: 200px;
+      color: $txt-color;
+      border-radius: 5px;
+      text-align: center;
+      padding: 10px 0px;
+      font-size: 2rem;
+    }
+  }
+}
+
+section {
+  .main_container {
+    display: flex;
+    .cart_item {
+      flex: 3;
+      display: flex;
+      flex-wrap: wrap;
+      .card {
+        position: relative;
+        border: 1px solid $border-color;
+        margin: 1.5%;
+        flex-basis: 30%;
+        .tag {
+          position: absolute;
+          top: 20px;
+          left: 0px;
+          background: $bg-color;
+          color: $white;
+          display: inline-block;
+          padding: 10px 20px;
+          font-size: 15px;
+        }
+        .card_img {
+          max-width: 322px;
+          height: 209px;
+          margin: 40px;
+          img {
+            width: 100%;
+            object-fit: contain;
+            height: inherit;
+          }
+        }
+        .card_footer {
+          background-color: $border-color;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          display: flex;
+          justify-content: space-between;
+          padding: 10px;
+          .card_itemcost {
+            p {
+              font-size: 1.5rem;
+              span {
+                del {
+                  text-decoration-color: $danger;
+                  padding: 0 10px 0 0;
+                }
+              }
+            }
+          }
+          .card_button {
+            display: flex;
+            align-items: flex-end;
+            a {
+              padding: 8px 20px;
+              border-color: $cornflowerblue;
+              color: $cornflowerblue;
+              border-radius: 2px;
+              border: 2px solid;
+              outline: none;
+              cursor: pointer;
+              text-decoration: none;
+              font-size: 1.5rem;
+              &:hover {
+                background: $cornflowerblue;
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+    }
+    .cart_item_cost {
+      flex: 1;
+      .itemcount {
+        .totalcostcard {
+          border: 1px solid #ccc;
+          padding: 8px 0px 0 0;
+          margin: 20px 10px;
+          ul {
+            text-decoration: none;
+            list-style: none;
+            font-size: 1.5rem;
+            li {
+              display: flex;
+              padding: 7px 10px;
+              span {
+                flex: 1;
+              }
+              span:nth-child(2) {
+                text-align: center;
+              }
+              span:nth-child(3) {
+                text-align: end;
+              }
+            }
+            li:last-child {
+              background-color: #ccc;
+            }
+          }
+        }
+        .cartheader {
+          display: flex;
+          justify-content: space-between;
+          font-size: 1.5rem;
+          padding: 5px 10px;
+          border-top: 1px solid #ccc;
+          padding: 10px 0px 10px 0px;
+          margin: 20px 10px;
+          border-bottom: 1px solid #ccc;
+          span {
+            flex: 2;
+          }
+          span:nth-child(2) {
+            flex: 1;
+            text-align: center;
+          }
+          span:nth-child(3) {
+            flex: 1;
+            text-align: center;
+          }
+        }
+        .totalcart {
+          padding: 0px 0px 0px 0px;
+          margin: 10px 10px;
+
+          .cartItemQty {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1rem;
+            padding: 5px 10px;
+            .cartCount {
+              display: flex;
+              justify-content: space-between;
+              flex: 2;
+              border: 1px solid #ccc;
+              padding: 5px 5px;
+              font-size: 1rem;
+              line-height: 24px;
+              img {
+                width: 25px;
+                height: 25px;
+              }
+              span {
+              }
+            }
+            .cartCountincrement {
+              flex: 1;
+              text-align: center;
+              .container {
+                input[type="button"] {
+                  width: 25px;
+                  height: 25px;
+                  border: 0px;
+                  background: none;
+                  font-size: 2.5rem;
+                  font-weight: bold;
+                  line-height: inherit;
+                }
+                input[type="text"] {
+                  height: 34px;
+                  border: 1px solid #ccc;
+                  padding: 5px 2px;
+                  width: 19px;
+                }
+              }
+            }
+            .cartCountCost {
+              flex: 1;
+              text-align: center;
+              p {
+                line-height: 30px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  section .main_container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  section .main_container .cart_item {
+    -webkit-box-flex: 3;
+    -ms-flex: 3;
+    flex: 0 0 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  section .main_container .cart_item_cost {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 0 0 100%;
+  }
+  section .main_container .cart_item .card {
+    position: relative;
+    border: 1px solid #ccc;
+    margin: 1% 5%;
+    -ms-flex-preferred-size: 30%;
+    flex-basis: 40%;
+  }
+}
+@media screen and (max-width: 480px) {
+  section .main_container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  section .main_container .cart_item {
+    -webkit-box-flex: 3;
+    -ms-flex: 3;
+    flex: 0 0 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  section .main_container .cart_item_cost {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 0 0 100%;
+  }
+  section .main_container .cart_item .card {
+    position: relative;
+    border: 1px solid #ccc;
+    margin: 1% 5%;
+    -ms-flex-preferred-size: 30%;
+    flex-basis: 90%;
+  }
+}
